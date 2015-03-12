@@ -9,5 +9,5 @@
 # Add rules
 #
 <% @rules.each do |value| -%>
-/sbin/ip rule add from <%= value['from'] %> to <%= value['to'] %> table <%= value['table'] %> priority <%= value['priority'] %>
+/sbin/ip rule add <% if value['from'] -%>from <%= value['from'] %><% end -%> <% if value['to'] -%>to <%= value['to'] %><% end -%> <% if value['fwmark'] -%>fwmark <%= value['fwmark'] %><% end -%> table <%= value['table'] %> priority <%= value['priority'] %>
 <% end -%>
